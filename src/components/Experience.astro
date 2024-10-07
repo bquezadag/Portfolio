@@ -1,0 +1,22 @@
+---
+import ExperienceItem from "./ExperienceItem.astro"
+const EXPERIENCE = [
+  {
+    date: "Enero 2024 - Marzo 2024",
+    title: "Practica Laboral",
+    company: "Compañia de Seguros Confuturo S.A.",
+    description:
+      "Lideré un proyecto de actualizacion de Sistemas Operativos (S.O) y Bases de datos. Incluyó etapas como, levantamiento de información, definiciones de estrategias, ejecuciones de las mismas, pruebas de exito y controles de calidad. Ademas, me encargué del seguimiento del proyecto y una actualizacion de la Base de datos de Gestión de la Configuracion (CMDB), garantizando asi estabilidad y eficiencia.",
+    },
+]
+---
+
+<ol class="relative mt-16">
+  {
+    EXPERIENCE.map((experience) => (
+      <li class="">
+        <ExperienceItem {...experience} />
+      </li>
+    ))
+  }
+</ol>
