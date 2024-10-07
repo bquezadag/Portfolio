@@ -1,4 +1,4 @@
-# 👨🏻‍💻 Porfolio para programadores y desarrolladores
+# 👨🏻‍💻 Portfolio
 
 <div align="center">
 <img src="./public/porfolio.png">
