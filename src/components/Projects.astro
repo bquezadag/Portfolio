@@ -5,9 +5,11 @@ import Tailwind from "./icons/Tailwind.astro"
 import Link from "./icons/Link.astro"
 import LinkButton from "./LinkButton.astro"
 import Firebase from "./icons/Firebase.astro"
+// import NestJS from "./icons/NestJS.astro"
+import Supabase from "./icons/Supabase.astro"
 
 const TAGS = {
-  NEXT: {
+  ASTRO: {
     name: "Astro",
     class: "bg-black text-white",
     icon: NextJS,
@@ -22,27 +24,48 @@ const TAGS = {
     class: "bg-black text-white",
     icon: Firebase,
   },
+  NEXTJS: {
+    name: "Next.js",
+    class: "bg-black text-white",
+    icon: NextJS,
+  },
+  NESTJS: {
+    name: "Nest.js",
+    class: "bg-black text-white",
+    icon: NextJS,
+  },
+  SUPABASE: {
+    name: "Supabase",
+    class: "bg-black text-white",
+    icon: Supabase,
+  },
 }
 const PROJECTS = [
   {
+    title: "Tendencia Roller",
+    description:
+      "Nuestra solución, Tendencia Roller, es una tienda de cortinas roller que permite a los usuarios personalizar y cotizar cortinas de forma sencilla y rápida. El sitio cuenta con interfaces intuitivas y fáciles de usar, optimizadas para un E-Commerce.",
+    link: "https://www.tendenciaroller.cl/",
+    image: "/tendencia_roller.png",
+    tags: [TAGS.NEXTJS, TAGS.NESTJS, TAGS.SUPABASE],
+  },
+  {
     title: "CareMind IA",
     description:
-      "Nuestra solución, CareMind IA, se materializó en una página web diseñada para ofrecer ayuda psicológica y académica a los usuarios.",
-      link: "https://caremind-ia.netlify.app/",
+      "Una página web diseñada para ofrecer ayuda psicológica y académica a los usuarios, integrando soluciones de inteligencia artificial.",
+    link: "https://caremind-ia.netlify.app/",
     github: "https://github.com/bquezadag/Caremind-IA",
-    image: "/435shots_so.png",    
-    tags: [TAGS.NEXT, TAGS.TAILWIND, TAGS.FIREBASE
-    ],
+    image: "/435shots_so.png",
+    tags: [TAGS.ASTRO, TAGS.TAILWIND, TAGS.FIREBASE],
   },
   {
     title: "CardioCare IA",
     description:
-      "Nuestra solución, CardioCareIA, se materializará en una página web diseñada para ofrecer una experiencia fácil de usar y accesible para todos los usuarios.",
+      "Una solución web diseñada para ofrecer una experiencia fácil de usar y accesible para todos los usuarios, enfocada en el cuidado cardíaco con apoyo de inteligencia artificial.",
     link: "https://cardio-care-ia.vercel.app/",
     github: "https://github.com/vicenteroa/CardioCare-IA",
     image: "/cardiocare.png",    
-    tags: [TAGS.NEXT, TAGS.TAILWIND, TAGS.FIREBASE
-    ],
+    tags: [TAGS.ASTRO, TAGS.TAILWIND, TAGS.FIREBASE],
   },
 ]
 ---
