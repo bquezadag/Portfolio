@@ -6,10 +6,45 @@ import MailIcon from "@/components/icons/Mail.astro"
 import SocialPill from "@/components/SocialPill.astro"
 ---
 
-<div class="max-w-xl">
-  <div class="flex gap-4 mb-4">
+<style>
+  @keyframes infinite-scroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(calc(-50%)); }
+  }
+
+  .tech-stack {
+    position: relative;
+    overflow: hidden;
+    padding: 1rem;
+    background: linear-gradient(90deg, 
+      var(--bg-color) 0%, 
+      transparent 2%, 
+      transparent 98%, 
+      var(--bg-color) 100%
+    );
+    --bg-color: rgb(243 244 246);
+  }
+
+  :global(.dark) .tech-stack {
+    --bg-color: rgb(31 41 55);
+  }
+
+  .tech-stack-track {
+    display: flex;
+    gap: 1rem;
+    width: fit-content;
+    animation: infinite-scroll 25s linear infinite;
+  }
+
+  .tech-stack-track:hover {
+    animation-play-state: paused;
+  }
+</style>
+
+<div class="max-w-3xl mx-auto px-6 py-12 sm:px-8 sm:py-16">
+  <div class="flex items-center gap-6 mb-8">
     <img
-      class="rounded-full shadow-lg size-16"
+      class="rounded-full shadow-lg size-20 sm:size-24"
       src="/me.webp"
       alt={personalImageAlt}
     />
@@ -19,25 +54,25 @@ import SocialPill from "@/components/SocialPill.astro"
       rel="noopener"
       class="flex items-center transition md:justify-center md:hover:scale-105"
     >
-      <Badge>Disponible para trabajos</Badge>
+      <Badge>Disponible</Badge>
     </a>
   </div>
-  <h1
-    class="text-4xl font-bold tracking-tight text-gray-800 sm:text-5xl dark:text-white"
-  >
-    Hola!, Soy Benjamín 
+
+  <h1 class="text-4xl font-bold tracking-tight text-gray-800 sm:text-6xl dark:text-white mb-8">
+    Hola!, Soy Benjamín.
   </h1>
-  <p
-    class="mt-6 text-xl text-justify text-gray-800 dark:[&>strong]:text-yellow-200 [&>strong]:text-yellow-500 [&>strong]:font-semibold dark:text-gray-300"
-  >
+
+  <p class="mt-8 text-justify text-xl leading-relaxed text-gray-800 dark:[&>strong]:text-yellow-200 [&>strong]:text-yellow-500 [&>strong]:font-semibold dark:text-gray-300 mb-12">
     <strong
       >Ingeniero en Computación e Informática</strong
-    > de Santiago, Chile. Soy Desarrollador Fullstack con experiencia en Arquitectura limpia, Nest JS, Node JS, TypeScript y React.
+    > <br />
+    Con experiencia como Desarrollador Fullstack, especializado en arquitectura limpia y tecnologías modernas como NestJS, React, TypeScript y JavaScript. Me destaco por mi capacidad de liderar proyectos, colaborar en equipos multidisciplinarios y entregar soluciones escalables y de alto impacto.
   </p>
-  <nav class="flex flex-wrap gap-4 mt-8">
+
+  <nav class="flex flex-wrap gap-6 mb-16">
     <SocialPill href="mailto:b.quezadagodoy@gmail.com">
       <MailIcon class="size-4" />
-      Contáctame
+      Contact me
     </SocialPill>
     <SocialPill href="https://linkedin.com/in/benjaminqg">
       <LinkedInIcon class="size-4" />
@@ -45,7 +80,7 @@ import SocialPill from "@/components/SocialPill.astro"
     </SocialPill>
     <SocialPill href="tel:+56966188938">
       <MailIcon class="size-4" />
-      Teléfono
+      Telephone
     </SocialPill>
     <SocialPill href="/CV-BQG.pdf" target="_blank">
       <svg 
@@ -64,7 +99,63 @@ import SocialPill from "@/components/SocialPill.astro"
       <path d="M9 13l6 0" />
       <path d="M9 17l6 0" />
       </svg>
-      CV
+      Download CV
     </SocialPill>
   </nav>
+
+  <section class="space-y-8">
+    <h2 class="text-3xl font-bold tracking-tight text-gray-800 sm:text-4xl dark:text-white">
+      My stack.
+    </h2>
+    <div class="tech-stack rounded-xl">
+      <div class="tech-stack-track">
+        <div class="flex gap-4">
+          <SocialPill href="https://react.dev/" target="_blank">
+            <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original.svg" class="size-4" alt="React" />
+            React
+          </SocialPill>
+          <SocialPill href="https://nestjs.com/" target="_blank">
+            <img src="https://www.vectorlogo.zone/logos/nestjs/nestjs-icon.svg" class="size-4" alt="NestJS" />
+            NestJS
+          </SocialPill>
+          <SocialPill href="https://nextjs.org/" target="_blank">
+            <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nextjs/nextjs-original.svg" class="size-4" alt="NextJS" />
+            NextJS
+          </SocialPill>
+          <SocialPill href="https://www.javascript.com/" target="_blank">
+            <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg" class="size-4" alt="JavaScript" />
+            JavaScript
+          </SocialPill>
+          <SocialPill href="https://www.python.org/" target="_blank">
+            <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" class="size-4" alt="Python" />
+            Python
+          </SocialPill>
+          <SocialPill href="https://www.typescriptlang.org/" target="_blank">
+            <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/typescript/typescript-original.svg" class="size-4" alt="TypeScript" />
+            TypeScript
+          </SocialPill>
+          <SocialPill href="https://www.postman.com/" target="_blank">
+            <img src="https://www.vectorlogo.zone/logos/getpostman/getpostman-icon.svg" class="size-4" alt="Postman" />
+            Postman
+          </SocialPill>
+          <SocialPill href="https://www.postgresql.org/" target="_blank">
+            <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/postgresql/postgresql-original.svg" class="size-4" alt="PostgreSQL" />
+            PostgreSQL
+          </SocialPill>
+          <SocialPill href="https://www.docker.com/" target="_blank">
+            <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/docker/docker-original.svg" class="size-4" alt="Docker" />
+            Docker
+          </SocialPill>
+          <SocialPill href="https://www.npmjs.com/" target="_blank">
+            <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/npm/npm-original-wordmark.svg" class="size-4" alt="NPM" />
+            NPM
+          </SocialPill>
+          <SocialPill href="https://firebase.google.com/" target="_blank">
+            <img src="https://www.vectorlogo.zone/logos/firebase/firebase-icon.svg" class="size-4" alt="Firebase" />
+            Firebase
+          </SocialPill>
+        </div>
+      </div>
+    </div>
+  </section>
 </div>
