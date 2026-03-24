@@ -1,0 +1,247 @@
+---
+---
+
+<style>
+  /* Inputs */
+  .form-input {
+    width: 100%;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--c-border);
+    border-radius: 12px;
+    padding: 0.85rem 1.1rem;
+    font-size: 0.9rem;
+    color: var(--c-text);
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+    font-family: inherit;
+    resize: none;
+  }
+  .form-input::placeholder { color: var(--c-muted); }
+  .form-input:focus {
+    background: rgba(255,255,255,0.07);
+    border-color: rgba(167,139,250,0.55);
+    box-shadow: 0 0 0 4px rgba(124,58,237,0.08);
+  }
+
+  /* Label */
+  .form-label {
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--c-muted);
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+
+  /* Button */
+  .btn-send {
+    width: 100%;
+    background: linear-gradient(135deg, #7c3aed, #4f46e5);
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    padding: 0.9rem 1rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    letter-spacing: 0.02em;
+    box-shadow: 0 4px 20px rgba(124,58,237,0.3);
+    transition: box-shadow 0.25s, transform 0.15s, opacity 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+  .btn-send:hover:not(:disabled) {
+    box-shadow: 0 6px 28px rgba(124,58,237,0.45);
+    transform: translateY(-1px);
+  }
+  .btn-send:active:not(:disabled) { transform: translateY(0); }
+  .btn-send:disabled { opacity: 0.55; cursor: not-allowed; }
+
+  /* Alerts */
+  .alert {
+    display: none;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.85rem 1rem;
+    border-radius: 12px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    line-height: 1.4;
+  }
+  .alert.show { display: flex; }
+  .alert-success {
+    background: rgba(16,185,129,0.08);
+    border: 1px solid rgba(16,185,129,0.22);
+    color: #10b981;
+  }
+  .alert-error {
+    background: rgba(239,68,68,0.08);
+    border: 1px solid rgba(239,68,68,0.22);
+    color: #f87171;
+  }
+
+  /* Divider with text */
+  .or-divider {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: var(--c-muted);
+    font-size: 0.75rem;
+    font-weight: 500;
+  }
+  .or-divider::before,
+  .or-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--c-border);
+  }
+</style>
+
+<section id="contacto" data-section="contacto"
+  class="w-full max-w-screen-xl mx-auto px-6 lg:px-16">
+
+  <div data-animate class="max-w-lg mx-auto">
+
+    <!-- Card -->
+    <div class="glass rounded-3xl overflow-hidden">
+
+      <!-- Top accent -->
+      <div class="h-[2px] bg-gradient-to-r from-violet-500 via-blue-400 to-cyan-400"></div>
+
+      <div class="p-8 sm:p-10">
+
+        <!-- Header -->
+        <div class="text-center mb-10">
+          <span class="inline-block text-[11px] font-bold tracking-[0.25em] uppercase
+            text-violet-500 dark:text-violet-400 mb-3">
+            04 / Contacto
+          </span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight mb-3">
+            <em class="not-italic text-gradient">Trabajemos</em>
+            <span class="text-[--c-text]"> juntos</span>
+          </h2>
+          <p class="text-sm text-[--c-muted] leading-relaxed max-w-xs mx-auto">
+            ¿Tienes un proyecto en mente? Escríbeme y conversemos.
+          </p>
+        </div>
+
+        <!-- Form -->
+        <form id="contact-form" class="space-y-5" novalidate>
+
+          <!-- Name + Email row -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            <div>
+              <label class="form-label" for="cf-name">Nombre</label>
+              <input id="cf-name" type="text" class="form-input" placeholder="Tu nombre" required />
+            </div>
+            <div>
+              <label class="form-label" for="cf-email">Email</label>
+              <input id="cf-email" type="email" class="form-input" placeholder="tu@email.com" required />
+            </div>
+          </div>
+
+          <!-- Message -->
+          <div>
+            <label class="form-label" for="cf-message">Mensaje</label>
+            <textarea id="cf-message" class="form-input" rows="5"
+              placeholder="Cuéntame sobre tu proyecto...&#10;¿Qué necesitas? ¿Cuál es el plazo?" required></textarea>
+          </div>
+
+          <!-- Submit -->
+          <button type="submit" id="cf-btn" class="btn-send">
+            <svg xmlns="http://www.w3.org/2000/svg" class="size-4" viewBox="0 0 24 24"
+              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 2L11 13"/><path d="M22 2L15 22 11 13 2 9l20-7z"/>
+            </svg>
+            Enviar mensaje
+          </button>
+
+          <!-- Alerts -->
+          <div class="alert alert-success" id="cf-success">
+            <svg xmlns="http://www.w3.org/2000/svg" class="size-4 shrink-0" viewBox="0 0 24 24"
+              fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M20 6L9 17l-5-5"/>
+            </svg>
+            ¡Mensaje enviado! Te responderé a la brevedad.
+          </div>
+          <div class="alert alert-error" id="cf-error">
+            <svg xmlns="http://www.w3.org/2000/svg" class="size-4 shrink-0" viewBox="0 0 24 24"
+              fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"/><path d="M12 8v4m0 4h.01"/>
+            </svg>
+            Hubo un error al enviar. Intenta de nuevo.
+          </div>
+
+        </form>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  document.addEventListener('astro:page-load', () => {
+    const form    = document.getElementById('contact-form') as HTMLFormElement | null
+    const btn     = document.getElementById('cf-btn')       as HTMLButtonElement | null
+    const success = document.getElementById('cf-success')
+    const error   = document.getElementById('cf-error')
+    if (!form || !btn || !success || !error) return
+
+    const originalHTML = btn.innerHTML
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault()
+
+      const name    = (form.querySelector('#cf-name')    as HTMLInputElement).value.trim()
+      const email   = (form.querySelector('#cf-email')   as HTMLInputElement).value.trim()
+      const message = (form.querySelector('#cf-message') as HTMLTextAreaElement).value.trim()
+
+      if (!name || !email || !message) return
+
+      btn.disabled = true
+      btn.innerHTML = `
+        <svg xmlns="http://www.w3.org/2000/svg" class="size-4 animate-spin" viewBox="0 0 24 24"
+          fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 12a9 9 0 1 1-6.219-8.56"/>
+        </svg>
+        Enviando...`
+
+      success.classList.remove('show')
+      error.classList.remove('show')
+
+      try {
+        const res = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+          body: JSON.stringify({
+            access_key: import.meta.env.PUBLIC_WEB3FORMS_KEY,
+            name,
+            email,
+            message,
+            subject: `[Portfolio] Mensaje de ${name}`,
+          }),
+        })
+
+        const data = await res.json()
+
+        if (data.success) {
+          form.reset()
+          success.classList.add('show')
+          setTimeout(() => success.classList.remove('show'), 6000)
+        } else {
+          error.classList.add('show')
+        }
+      } catch {
+        error.classList.add('show')
+      } finally {
+        btn.disabled = false
+        btn.innerHTML = originalHTML
+      }
+    })
+  })
+</script>

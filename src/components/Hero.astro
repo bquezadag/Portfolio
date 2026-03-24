@@ -133,10 +133,10 @@ import SocialPill from "@/components/SocialPill.astro"
 
 </style>
 
-<section class="max-w-5xl mx-auto px-6 pt-24 pb-10 sm:px-8 sm:pt-28">
+<section class="w-full max-w-screen-xl mx-auto px-6 lg:px-16 pt-24 pb-10 sm:pt-28">
 
   <!-- TWO-COLUMN HERO -->
-  <div class="grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-12 lg:gap-16 items-start">
+  <div class="grid grid-cols-1 lg:grid-cols-[1fr_360px] gap-12 lg:gap-20 items-start">
 
     <!-- ── LEFT ── -->
     <div>
@@ -210,8 +210,9 @@ import SocialPill from "@/components/SocialPill.astro"
 
     <!-- ── RIGHT ── -->
     <div class="anim-right flex flex-col items-center lg:items-start gap-5 lg:pt-10">
-      <!-- Photo with corner brackets -->
-      <div class="relative inline-block p-5">
+
+      <!-- Photo with corner brackets — full width to match stats card -->
+      <div class="relative w-full max-w-[240px] lg:max-w-full p-5 flex justify-center">
         <!-- Corner brackets -->
         <span class="deco-bracket deco-tl" style="top:0;left:0"></span>
         <span class="deco-bracket deco-tr" style="top:0;right:0"></span>
@@ -220,7 +221,7 @@ import SocialPill from "@/components/SocialPill.astro"
 
         <div class="photo-frame">
           <img
-            class="w-52 h-52 lg:w-56 lg:h-56 object-cover rounded-[20px]"
+            class="w-48 h-48 lg:w-52 lg:h-52 object-cover rounded-[20px]"
             src="/yo.jfif"
             alt={personalImageAlt}
             style="object-position:center center"

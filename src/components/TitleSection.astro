@@ -16,22 +16,21 @@ const { number, class: className } = Astro.props
 <div class={`mb-10 ${className ?? ''}`} data-animate>
   {number && (
     <span class="inline-block text-[11px] font-bold tracking-[0.25em] uppercase
-      text-violet-500 dark:text-violet-400 mb-3">
+      text-fuchsia-600 dark:text-fuchsia-400 mb-3">
       {number}
     </span>
   )}
   <h2 class="flex items-center gap-3 text-2xl sm:text-3xl font-bold tracking-tight
     text-gray-900 dark:text-white/95
-    [&>svg]:text-violet-500 dark:[&>svg]:text-violet-400
+    [&>svg]:text-fuchsia-500 dark:[&>svg]:text-fuchsia-400
     [&>svg]:shrink-0">
     <slot />
   </h2>
   <div class="relative mt-4 h-px bg-gradient-to-r
-    from-violet-500/50 via-blue-400/25 to-transparent
-    dark:from-violet-500/45 dark:via-blue-500/15 dark:to-transparent overflow-hidden">
-    <!-- Animated glow dot running along the line -->
+    from-fuchsia-500/50 via-violet-400/25 to-transparent
+    dark:from-fuchsia-400/50 dark:via-violet-400/20 dark:to-transparent overflow-hidden">
     <span class="title-shimmer absolute top-0 left-0 h-full w-24
-      bg-gradient-to-r from-transparent via-violet-400/70 to-transparent
-      dark:via-violet-300/60"></span>
+      bg-gradient-to-r from-transparent via-fuchsia-400/80 to-transparent
+      dark:via-fuchsia-300/70"></span>
   </div>
 </div>

@@ -10,20 +10,21 @@ import Projects from "@/components/Projects.astro"
 import SectionContainer from "@/components/SectionContainer.astro"
 import Hero from "@/components/Hero.astro"
 import TitleSection from "@/components/TitleSection.astro"
+import Contact from "@/components/Contact.astro"
 ---
 
 <Layout
   title="Benjamín Quezada · Fullstack Developer"
   description="Portfolio de Benjamín Quezada — Ingeniero en Computación e Informática, Fullstack Developer especializado en NestJS, React y TypeScript."
 >
-  <main class="px-4">
+  <main>
 
     <!-- Hero -->
     <SectionContainer class="pb-0 pt-0">
       <Hero />
     </SectionContainer>
 
-    <div class="space-y-28 pb-10">
+    <div class="space-y-28 pb-28">
 
       <!-- Experience -->
       <SectionContainer id="experiencia">
@@ -52,6 +53,10 @@ import TitleSection from "@/components/TitleSection.astro"
         <AboutMe />
       </SectionContainer>
 
+      <!-- Contact -->
+      <Contact />
+
     </div>
+
   </main>
 </Layout>
