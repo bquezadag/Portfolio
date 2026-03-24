@@ -1,8 +1,37 @@
-<div class="mb-8">
-  <h2
-    class={`flex items-center text-2xl font-bold gap-x-3 text-black/80 dark:text-white/95 [&>svg]:text-violet-500 dark:[&>svg]:text-violet-400 ${Astro.props.className}`}
-  >
+---
+const { number, class: className } = Astro.props
+---
+
+<style>
+  @keyframes shimmer-line {
+    from { transform: translateX(-100%); }
+    to   { transform: translateX(500%); }
+  }
+  .title-shimmer {
+    animation: shimmer-line 2.8s cubic-bezier(0.4,0,0.6,1) both;
+    animation-delay: 0.4s;
+  }
+</style>
+
+<div class={`mb-10 ${className ?? ''}`} data-animate>
+  {number && (
+    <span class="inline-block text-[11px] font-bold tracking-[0.25em] uppercase
+      text-violet-500 dark:text-violet-400 mb-3">
+      {number}
+    </span>
+  )}
+  <h2 class="flex items-center gap-3 text-2xl sm:text-3xl font-bold tracking-tight
+    text-gray-900 dark:text-white/95
+    [&>svg]:text-violet-500 dark:[&>svg]:text-violet-400
+    [&>svg]:shrink-0">
     <slot />
   </h2>
-  <div class="mt-3 h-px bg-gradient-to-r from-violet-400/60 via-blue-400/30 to-transparent dark:from-violet-500/50 dark:via-blue-500/20 dark:to-transparent"></div>
+  <div class="relative mt-4 h-px bg-gradient-to-r
+    from-violet-500/50 via-blue-400/25 to-transparent
+    dark:from-violet-500/45 dark:via-blue-500/15 dark:to-transparent overflow-hidden">
+    <!-- Animated glow dot running along the line -->
+    <span class="title-shimmer absolute top-0 left-0 h-full w-24
+      bg-gradient-to-r from-transparent via-violet-400/70 to-transparent
+      dark:via-violet-300/60"></span>
+  </div>
 </div>

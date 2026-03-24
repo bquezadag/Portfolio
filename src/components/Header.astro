@@ -2,109 +2,110 @@
 import ThemeToggle from "./ThemeToggle.astro"
 
 const navItems = [
-  {
-    title: "Experiencia",
-    label: "experiencia",
-    url: "/#experiencia",
-  },
-  {
-    title: "Proyectos",
-    label: "proyectos",
-    url: "/#proyectos",
-  },
-  {
-    title: "Sobre mí",
-    label: "sobre-mi",
-    url: "/#sobre-mi",
-  },
-  {
-    title: "Contacto",
-    label: "contacto",
-    url: "mailto:b.quezadagodoy@gmail.com",
-  },
+  { title: "Experiencia", label: "experiencia", url: "/#experiencia" },
+  { title: "Proyectos",   label: "proyectos",   url: "/#proyectos"   },
+  { title: "Sobre mí",    label: "sobre-mi",    url: "/#sobre-mi"    },
+  { title: "Contacto",    label: "contacto",    url: "mailto:b.quezadagodoy@gmail.com" },
 ]
 ---
 
-<header
-  class="fixed top-0 z-10 flex items-center justify-center w-full mx-auto mt-2"
->
-  <nav
-    class="flex px-3 text-sm font-medium rounded-full text-gray-600 dark:text-gray-200 justify-center items-center"
+<header class="fixed top-0 z-10 w-full flex justify-center mt-3 px-4">
+  <nav id="main-nav"
+    class="relative flex items-center gap-1 px-3 py-1.5 rounded-full
+    text-sm font-medium
+    text-gray-600 dark:text-gray-300
+    bg-white/60 dark:bg-[#0c0e1a]/70
+    border border-gray-200/60 dark:border-white/[0.07]
+    backdrop-blur-xl shadow-sm dark:shadow-none
+    transition-all duration-500"
   >
-    {
-      navItems.map((link) => (
-        <a
-          class="relative block px-2 py-2 transition hover:text-blue-500 dark:hover:text-blue-500"
-          aria-label={link.label}
-          href={link.url}
-        >
-          {link.title}
-        </a>
-      ))
-    }
+    <!-- Active slide indicator -->
+    <span id="nav-indicator"
+      class="absolute h-7 rounded-full bg-violet-500/10 dark:bg-violet-500/15 border border-violet-400/20
+      transition-all duration-300 ease-out opacity-0 pointer-events-none"
+    ></span>
+
+    {navItems.map((link) => (
+      <a
+        class="relative z-10 px-3 py-1 rounded-full transition-colors duration-200
+          hover:text-violet-600 dark:hover:text-violet-400"
+        aria-label={link.label}
+        href={link.url}
+      >
+        {link.title}
+      </a>
+    ))}
     <ThemeToggle />
   </nav>
 </header>
 
 <script>
   document.addEventListener("astro:page-load", () => {
-    const sections = document.querySelectorAll("section")
-    const navItems = document.querySelectorAll("header nav a")
+    const sections   = document.querySelectorAll("section[id]")
+    const navLinks   = document.querySelectorAll<HTMLAnchorElement>("#main-nav a[aria-label]")
+    const indicator  = document.getElementById("nav-indicator")
 
-    const callback = (entries: any[]) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          navItems.forEach((item) => {
-            if (item.getAttribute("aria-label") == entry.target.id) {
-              item.classList.add("text-blue-500")
-            } else {
-              item.classList.remove("text-blue-500")
-            }
-          })
-        }
+    // Active section via IntersectionObserver
+    const setActive = (id: string) => {
+      navLinks.forEach(link => {
+        const isActive = link.getAttribute("aria-label") === id
+        link.classList.toggle("text-violet-600",       isActive)
+        link.classList.toggle("dark:text-violet-400",  isActive)
+        link.classList.toggle("font-semibold",         isActive)
+        if (isActive && indicator) moveIndicator(link)
       })
     }
 
-    const observer = new IntersectionObserver(callback, {
-      root: null,
-      rootMargin: "0px",
-      threshold: 0.3,
-    })
+    const moveIndicator = (el: HTMLElement) => {
+      if (!indicator) return
+      const nav  = document.getElementById("main-nav")!
+      const navR = nav.getBoundingClientRect()
+      const elR  = el.getBoundingClientRect()
+      indicator.style.width   = `${elR.width}px`
+      indicator.style.left    = `${elR.left - navR.left}px`
+      indicator.style.opacity = "1"
+    }
 
-    sections.forEach((section) => {
-      observer.observe(section)
-    })
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) setActive(e.target.id) })
+    }, { threshold: 0.3 })
 
-    // Cleanup function
+    sections.forEach(s => obs.observe(s))
+
     document.onvisibilitychange = () => {
       if (document.visibilityState === "hidden") {
-        observer.disconnect()
+        obs.disconnect()
       } else {
-        sections.forEach((section) => {
-          observer.observe(section)
-        })
+        sections.forEach(s => obs.observe(s))
       }
     }
   })
 </script>
 
 <style>
-  nav {
-    animation: nav-shadown 1s linear both;
+  #main-nav {
+    animation: nav-appear 1s linear both;
     animation-timeline: scroll();
-    animation-range: 0 100px;
+    animation-range: 0 120px;
   }
 
-  nav {
-    @apply dark:bg-gray-800/90 bg-white/50;
-  }
-
-  @keyframes nav-shadown {
-    0% {
-      @apply dark:bg-gray-800/0 bg-white/0;
-    }
+  @keyframes nav-appear {
     to {
-      @apply shadow-lg ring-1 backdrop-blur ring-white/10;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+      background-color: rgba(255,255,255,0.85);
+    }
+  }
+
+  :global(.dark) #main-nav {
+    animation: nav-appear-dark 1s linear both;
+    animation-timeline: scroll();
+    animation-range: 0 120px;
+  }
+
+  @keyframes nav-appear-dark {
+    to {
+      box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+      background-color: rgba(10,11,24,0.85);
     }
   }
 </style>

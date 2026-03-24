@@ -3,18 +3,18 @@ const { href } = Astro.props;
 ---
 
 <a
-    target="_blank"
-    href={href}
-    role="link"
-    class="inline-flex items-center justify-center gap-2 px-3.5 py-2 text-sm font-medium transition-all
-    bg-white/80 dark:bg-white/[0.05]
-    text-gray-700 dark:text-gray-200
-    border border-gray-200 dark:border-white/10
-    rounded-xl
-    hover:border-violet-400/60 hover:text-violet-600 dark:hover:text-violet-300 dark:hover:border-violet-500/40 hover:bg-violet-50/80 dark:hover:bg-violet-500/10
-    shadow-sm dark:shadow-none
-    focus:outline-none focus-visible:ring-2 focus-visible:ring-violet-500/50
-    max-w-fit"
+  target="_blank"
+  href={href}
+  role="link"
+  class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg
+  text-gray-700 dark:text-gray-300
+  bg-white/70 dark:bg-white/[0.05]
+  border border-gray-200 dark:border-white/[0.08]
+  hover:border-violet-400/50 hover:text-violet-600 dark:hover:text-violet-300 dark:hover:border-violet-500/40
+  hover:bg-violet-50 dark:hover:bg-violet-500/10
+  transition-all duration-200
+  focus:outline-none focus-visible:ring-2 focus-visible:ring-violet-500/40
+  max-w-fit"
 >
-    <slot />
+  <slot />
 </a>

@@ -1,33 +1,114 @@
 ---
- const personalImageAlt = "Benjamín Quezada"
+const personalImageAlt = "Benjamín Quezada"
+
+const skills = ["NestJS", "TypeScript", "React", "Next.js", "PostgreSQL", "Docker", "C / C++", "MongoDB", "VMware", "AI Agent Specialist", "Jira", "Authentik"]
+const certs  = ["AI Practitioner Certificate", "TOEIC Bridge"]
 ---
 
-<article class="flex flex-col items-center justify-center gap-10 md:flex-row">
-  <div class="flex-1 rounded-2xl bg-white/60 dark:bg-white/[0.03] border border-gray-200/80 dark:border-white/[0.06] shadow-sm dark:shadow-none p-6 order-2 md:order-1">
-    <div class="[&>p]:mb-4 [&>p]:text-sm [&>p]:leading-relaxed [&>p>strong]:text-violet-600 dark:[&>p>strong]:text-violet-300 [&>p>strong]:font-semibold text-gray-700 dark:text-gray-300">
-      <p>
-        Mi nombre es Benjamín Quezada, <strong>Ingeniero en Informática</strong> egresado de la Universidad Andrés Bello.
+<style>
+  .photo-glow {
+    position: relative;
+    display: inline-block;
+  }
+  .photo-glow::before {
+    content: '';
+    position: absolute; inset: -2px;
+    border-radius: 20px;
+    background: linear-gradient(135deg, #7c3aed, #3b82f6);
+    z-index: -1;
+    opacity: 0.6;
+    transition: opacity 0.3s;
+  }
+  .photo-glow:hover::before { opacity: 0.9; }
+  .photo-glow::after {
+    content: '';
+    position: absolute; inset: -24px;
+    border-radius: 32px;
+    background: linear-gradient(135deg, rgba(124,58,237,0.15), rgba(59,130,246,0.08));
+    filter: blur(24px);
+    z-index: -2;
+  }
+  .skill-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.3rem 0.75rem;
+    border-radius: 99px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    background: var(--c-card);
+    border: 1px solid var(--c-border);
+    color: var(--c-text);
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .skill-tag:hover {
+    border-color: var(--c-border-h);
+    transform: translateY(-1px);
+  }
+  .skill-tag::before {
+    content: '';
+    display: block;
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #7c3aed, #3b82f6);
+    flex-shrink: 0;
+  }
+</style>
+
+<div class="grid grid-cols-1 md:grid-cols-[1fr_auto] gap-10 items-end">
+
+  <!-- Text side -->
+  <div class="space-y-6" data-animate>
+    <p class="text-base leading-relaxed text-[--c-muted]">
+      Mi nombre es <strong class="font-semibold text-[--c-text]">Benjamín Quezada</strong>,
+      Ingeniero en Informática egresado de la
+      <strong class="font-semibold text-[--c-text]">Universidad Andrés Bello</strong>.
+      Apasionado por crear software de calidad con arquitectura limpia y tecnologías modernas.
+    </p>
+
+    <!-- Skills -->
+    <div>
+      <p class="text-[11px] font-bold tracking-[0.2em] uppercase text-[--c-muted] mb-3">
+        Tecnologías
       </p>
-      <p>
-        Algunas de mis habilidades incluyen: <strong>trabajo en equipo y manejo de tecnologías como NestJS, TypeScript, React, C, C++, MongoDB y VMware.</strong>
+      <div class="flex flex-wrap gap-2">
+        {skills.map(s => <span class="skill-tag">{s}</span>)}
+      </div>
+    </div>
+
+    <!-- Certs -->
+    <div>
+      <p class="text-[11px] font-bold tracking-[0.2em] uppercase text-[--c-muted] mb-3">
+        Certificaciones
       </p>
-      <p class="!mb-0">
-        Certificaciones: <strong>Artificial Intelligence Practitioner Certificate y TOEIC Bridge.</strong>
-      </p>
+      <div class="flex flex-col gap-2">
+        {certs.map(c => (
+          <div class="flex items-center gap-3 p-3 glass rounded-xl">
+            <span class="flex-shrink-0 w-7 h-7 rounded-lg flex items-center justify-center
+              bg-violet-500/15 text-violet-500 dark:text-violet-400">
+              <svg xmlns="http://www.w3.org/2000/svg" class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+              </svg>
+            </span>
+            <span class="text-sm font-medium text-[--c-text]">{c}</span>
+          </div>
+        ))}
+      </div>
     </div>
   </div>
 
-  <div class="order-1 md:order-2 flex-shrink-0">
-    <div class="relative">
-      <div class="absolute inset-0 rounded-2xl bg-gradient-to-br from-violet-400/30 to-blue-400/30 dark:from-violet-500/20 dark:to-blue-500/20 blur-xl scale-105"></div>
+  <!-- Photo side -->
+  <div class="flex justify-center md:justify-end" data-animate data-delay="2">
+    <div class="photo-glow">
       <img
         width="200"
         height="200"
         src="/yo.jfif"
         alt={personalImageAlt}
-        class="relative w-48 h-48 lg:w-56 lg:h-56 object-cover rounded-2xl rotate-2 ring-1 ring-black/10 dark:ring-white/10 shadow-lg"
-        style="object-position: 50% 50%"
+        class="w-52 h-52 lg:w-60 lg:h-60 object-cover rounded-[18px] rotate-1"
+        style="object-position:50% 50%"
       />
     </div>
   </div>
-</article>
+
+</div>

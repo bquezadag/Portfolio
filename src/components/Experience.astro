@@ -6,7 +6,7 @@ const EXPERIENCE = [
     title: "Software Developer",
     company: "ACL",
     description:
-      "ACL es una empresa la cual se desempeña en tecnología. Acompañando con soluciones integrales y personalizadas para potenciar la transformación digital de tu empresa.",
+      "Desarrollo de un sistema de gestión de activos empresariales que centraliza y visualiza todos los activos de la organización. El proyecto integra Authentik como solución de identidad y acceso (IAM) para la autenticación segura de usuarios. Además, trabajo en la implementación de agentes de inteligencia artificial que automatizan procesos internos y potencian la toma de decisiones dentro de la plataforma.",
   },
   {
     date: "Noviembre 2024 - Actualidad",
@@ -20,24 +20,20 @@ const EXPERIENCE = [
     title: "Práctica Laboral",
     company: "Safe Wave",
     description:
-      "Lideré el desarrollo y mantenimiento de una aplicación de seguridad social localizada en Temuco. Trabajé con tecnologías modernas como NestJS y TypeScript, aplicando principios de arquitectura limpia para garantizar un código escalable, mantenible y eficiente. Mi desempeño abarcó desde el diseño e implementación de nuevas funcionalidades hasta la optimización de procesos existentes, asegurando la calidad y seguridad de la plataforma.",
+      "Lideré el desarrollo y mantenimiento de una aplicación de seguridad social localizada en Temuco. Trabajé con tecnologías modernas como NestJS y TypeScript, aplicando principios de arquitectura limpia para garantizar un código escalable, mantenible y eficiente.",
   },
   {
     date: "Enero 2024 - Marzo 2024",
     title: "Práctica Laboral",
     company: "Compañía de Seguros Confuturo S.A.",
     description:
-      "Lideré un proyecto de actualización de Sistemas Operativos (S.O) y Bases de Datos. Incluyó etapas como levantamiento de información, definición de estrategias, ejecución de las mismas, pruebas de éxito y controles de calidad. Además, me encargué del seguimiento del proyecto y una actualización de la Base de Datos de Gestión de la Configuración (CMDB), garantizando así estabilidad y eficiencia.",
+      "Lideré un proyecto de actualización de Sistemas Operativos y Bases de Datos. Incluyó etapas como levantamiento de información, definición de estrategias, ejecución, pruebas de éxito y controles de calidad. Además, actualización de la CMDB.",
   },
 ]
 ---
 
-<ol class="relative mt-16">
-  {
-    EXPERIENCE.map((experience) => (
-      <li class="">
-        <ExperienceItem {...experience} />
-      </li>
-    ))
-  }
-</ol>
+<div class="flex flex-col gap-4">
+  {EXPERIENCE.map((exp, i) => (
+    <ExperienceItem {...exp} index={i} />
+  ))}
+</div>

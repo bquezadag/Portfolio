@@ -13,39 +13,45 @@ import TitleSection from "@/components/TitleSection.astro"
 ---
 
 <Layout
-  title="Portfolio de Benjamín - Fullstack developer | Cloud Computing "
-  description="Benjamín's Personal Website"
+  title="Benjamín Quezada · Fullstack Developer"
+  description="Portfolio de Benjamín Quezada — Ingeniero en Computación e Informática, Fullstack Developer especializado en NestJS, React y TypeScript."
 >
   <main class="px-4">
-    <SectionContainer class="py-16 md:py-36">
-      <Hero>
-      </slot>
-    </Hero>
-    </SectionContainer>
-    <div class="space-y-24">
-    <SectionContainer id="experiencia">
-      <TitleSection>
-        <Briefcase class="size-8" />
-        Laboral Experience
-      </TitleSection>
-      <Experience />
+
+    <!-- Hero -->
+    <SectionContainer class="pb-0 pt-0">
+      <Hero />
     </SectionContainer>
 
-    <SectionContainer id="proyectos">
-      <TitleSection>
-        <CodeIcon class="size-7" />
-        Projects
-      </TitleSection>
-      <Projects />
-    </SectionContainer>
+    <div class="space-y-28 pb-10">
 
-    <SectionContainer id="sobre-mi">
-      <TitleSection>
-        <ProfileCheck class="size-8" />
-        About Me
-      </TitleSection>
-      <AboutMe />
-    </SectionContainer>
-  </div>
+      <!-- Experience -->
+      <SectionContainer id="experiencia">
+        <TitleSection number="01 / EXPERIENCIA">
+          <Briefcase class="size-6" />
+          Experiencia Laboral
+        </TitleSection>
+        <Experience />
+      </SectionContainer>
+
+      <!-- Projects -->
+      <SectionContainer id="proyectos">
+        <TitleSection number="02 / PROYECTOS">
+          <CodeIcon class="size-6" />
+          Proyectos
+        </TitleSection>
+        <Projects />
+      </SectionContainer>
+
+      <!-- About -->
+      <SectionContainer id="sobre-mi">
+        <TitleSection number="03 / SOBRE MÍ">
+          <ProfileCheck class="size-6" />
+          Sobre mí
+        </TitleSection>
+        <AboutMe />
+      </SectionContainer>
+
+    </div>
   </main>
 </Layout>

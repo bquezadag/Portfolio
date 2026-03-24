@@ -1,281 +1,282 @@
 ---
 const personalImageAlt = "Benjamín Quezada"
-import Badge from "@/components/Badge.astro"
 import LinkedInIcon from "@/components/icons/LinkedIn.astro"
 import MailIcon from "@/components/icons/Mail.astro"
 import SocialPill from "@/components/SocialPill.astro"
 ---
 
 <style>
-  @keyframes infinite-scroll {
+  /* Entry animations */
+  @keyframes fadeUp {
+    from { opacity:0; transform:translateY(22px); }
+    to   { opacity:1; transform:translateY(0); }
+  }
+  @keyframes fadeRight {
+    from { opacity:0; transform:translateX(28px); }
+    to   { opacity:1; transform:translateX(0); }
+  }
+  @keyframes scrollMarquee {
     from { transform: translateX(0); }
-    to { transform: translateX(calc(-50%)); }
+    to   { transform: translateX(-50%); }
+  }
+  @keyframes ping {
+    75%,100% { transform:scale(2); opacity:0; }
   }
 
-  @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(24px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
+  .anim-0 { animation: fadeUp 0.6s cubic-bezier(0.16,1,0.3,1) 0.05s both; }
+  .anim-1 { animation: fadeUp 0.6s cubic-bezier(0.16,1,0.3,1) 0.15s both; }
+  .anim-2 { animation: fadeUp 0.6s cubic-bezier(0.16,1,0.3,1) 0.28s both; }
+  .anim-3 { animation: fadeUp 0.6s cubic-bezier(0.16,1,0.3,1) 0.40s both; }
+  .anim-4 { animation: fadeUp 0.6s cubic-bezier(0.16,1,0.3,1) 0.52s both; }
+  .anim-right { animation: fadeRight 0.8s cubic-bezier(0.16,1,0.3,1) 0.2s both; }
 
-  @keyframes fadeInLeft {
-    from {
-      opacity: 0;
-      transform: translateX(-20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateX(0);
-    }
-  }
-
-  .hero-name {
-    background: linear-gradient(135deg, #a78bfa 0%, #60a5fa 50%, #34d399 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-
-  :global(.dark) .hero-name {
-    background: linear-gradient(135deg, #c4b5fd 0%, #93c5fd 50%, #6ee7b7 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-
-  .animate-fade-up {
-    animation: fadeInUp 0.7s ease both;
-  }
-
-  .animate-fade-up-delay-1 {
-    animation: fadeInUp 0.7s ease 0.1s both;
-  }
-
-  .animate-fade-up-delay-2 {
-    animation: fadeInUp 0.7s ease 0.2s both;
-  }
-
-  .animate-fade-up-delay-3 {
-    animation: fadeInUp 0.7s ease 0.3s both;
-  }
-
-  .animate-fade-up-delay-4 {
-    animation: fadeInUp 0.7s ease 0.4s both;
-  }
-
-  .profile-ring {
+  /* Photo with gradient border */
+  .photo-frame {
     position: relative;
+    display: inline-block;
+    border-radius: 22px;
+  }
+  .photo-frame::before {
+    content:'';
+    position:absolute; inset:-2px;
+    border-radius:24px;
+    background:linear-gradient(135deg,#7c3aed,#3b82f6,#06b6d4);
+    z-index:-1;
+    opacity:0.75;
+  }
+  .photo-frame::after {
+    content:'';
+    position:absolute; inset:-30px;
+    border-radius:40px;
+    background:linear-gradient(135deg,rgba(124,58,237,0.18),rgba(59,130,246,0.08));
+    filter:blur(30px);
+    z-index:-2;
   }
 
-  .profile-ring::before {
-    content: '';
-    position: absolute;
-    inset: -3px;
-    border-radius: 9999px;
-    background: linear-gradient(135deg, #a78bfa, #60a5fa, #34d399);
-    z-index: -1;
-    opacity: 0.7;
+  /* Role line */
+  .role-line::before {
+    content:'';
+    display:inline-block;
+    width:2.5rem; height:2px;
+    background:linear-gradient(90deg,#7c3aed,#3b82f6);
+    border-radius:99px;
+    vertical-align:middle;
+    margin-right:0.6rem;
+    margin-bottom:2px;
   }
 
-  :global(.dark) .profile-ring::before {
-    opacity: 1;
+  /* Tech marquee */
+  .marquee-wrap {
+    -webkit-mask: linear-gradient(90deg,transparent 0%,#000 7%,#000 93%,transparent 100%);
+    mask: linear-gradient(90deg,transparent 0%,#000 7%,#000 93%,transparent 100%);
+    overflow:hidden;
+    padding:0.4rem 0;
+  }
+  .marquee-track {
+    display:flex; gap:0.75rem;
+    width:fit-content;
+    animation: scrollMarquee 38s linear infinite;
+  }
+  .marquee-track:hover { animation-play-state:paused; }
+
+  /* Stats card */
+  .stat-item + .stat-item { border-left:1px solid var(--c-border); }
+
+  /* CV button glow */
+  .btn-cv {
+    background: linear-gradient(135deg,#7c3aed,#4f46e5);
+    color:#fff;
+    border:none;
+    box-shadow: 0 4px 20px rgba(124,58,237,0.3);
+    transition: box-shadow 0.25s, transform 0.2s;
+  }
+  .btn-cv:hover {
+    box-shadow: 0 6px 28px rgba(124,58,237,0.5);
+    transform: translateY(-1px);
   }
 
-  .tech-stack {
-    position: relative;
-    overflow: hidden;
-    padding: 0.75rem 0;
-    -webkit-mask: linear-gradient(90deg, transparent 0%, black 8%, black 92%, transparent 100%);
-    mask: linear-gradient(90deg, transparent 0%, black 8%, black 92%, transparent 100%);
+  /* Divider */
+  .fade-line {
+    height:1px;
+    background:linear-gradient(90deg,transparent,rgba(124,58,237,0.45),rgba(59,130,246,0.25),transparent);
   }
 
-  .tech-stack-track {
-    display: flex;
-    gap: 0.75rem;
-    width: fit-content;
-    animation: infinite-scroll 30s linear infinite;
+  /* ── Decorative corner brackets (right column) ── */
+  .deco-bracket {
+    position:absolute;
+    width:20px; height:20px;
+    pointer-events:none;
   }
+  .deco-bracket::before,
+  .deco-bracket::after {
+    content:'';
+    position:absolute;
+    background:rgba(124,58,237,0.35);
+    transition: background 0.3s;
+  }
+  .dark .deco-bracket::before,
+  .dark .deco-bracket::after {
+    background:rgba(167,139,250,0.4);
+  }
+  /* top-left bracket */
+  .deco-tl::before { top:0; left:0; width:100%; height:1.5px; }
+  .deco-tl::after  { top:0; left:0; width:1.5px; height:100%; }
+  /* top-right bracket */
+  .deco-tr::before { top:0; right:0; width:100%; height:1.5px; }
+  .deco-tr::after  { top:0; right:0; width:1.5px; height:100%; }
+  /* bottom-left bracket */
+  .deco-bl::before { bottom:0; left:0; width:100%; height:1.5px; }
+  .deco-bl::after  { bottom:0; left:0; width:1.5px; height:100%; }
+  /* bottom-right bracket */
+  .deco-br::before { bottom:0; right:0; width:100%; height:1.5px; }
+  .deco-br::after  { bottom:0; right:0; width:1.5px; height:100%; }
 
-  .tech-stack-track:hover {
-    animation-play-state: paused;
-  }
-
-  .divider {
-    height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(167,139,250,0.3), transparent);
-  }
-
-  :global(.dark) .divider {
-    background: linear-gradient(90deg, transparent, rgba(167,139,250,0.5), transparent);
-  }
 </style>
 
-<div class="max-w-3xl mx-auto px-6 py-12 sm:px-8 sm:py-16">
-  <!-- Avatar + badge row -->
-  <div class="flex items-center gap-6 mb-8 animate-fade-up">
-    <div class="profile-ring">
-      <img
-        class="rounded-full size-20 sm:size-24 object-cover"
-        src="/yo.jfif"
-        alt={personalImageAlt}
-      />
+<section class="max-w-5xl mx-auto px-6 pt-24 pb-10 sm:px-8 sm:pt-28">
+
+  <!-- TWO-COLUMN HERO -->
+  <div class="grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-12 lg:gap-16 items-start">
+
+    <!-- ── LEFT ── -->
+    <div>
+      <!-- Available badge -->
+      <div class="anim-0 mb-7">
+        <span class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold tracking-wide
+          bg-emerald-500/10 text-emerald-500 dark:text-emerald-400
+          border border-emerald-500/20 dark:border-emerald-500/25">
+          <span class="relative inline-flex size-2">
+            <span class="animate-[ping_1.5s_ease_infinite] absolute inline-flex size-full rounded-full bg-emerald-400 opacity-60"></span>
+            <span class="relative inline-flex size-2 rounded-full bg-emerald-500 dark:bg-emerald-400"></span>
+          </span>
+          Disponible para trabajar
+        </span>
+      </div>
+
+      <!-- Name -->
+      <div class="anim-1 mb-5">
+        <p class="text-sm font-semibold tracking-[0.2em] uppercase text-[--c-muted] mb-2">
+          Hola, soy
+        </p>
+        <h1 class="text-gradient text-[clamp(3rem,8vw,5.5rem)] font-extrabold tracking-tighter leading-[0.95]">
+          Benjamín<br />Quezada
+        </h1>
+      </div>
+
+      <!-- Role -->
+      <p class="anim-2 role-line text-base font-semibold text-violet-600 dark:text-violet-400 mb-6">
+        Fullstack Developer · Ing. en Computación
+      </p>
+
+      <!-- Bio -->
+      <p class="anim-3 text-base leading-relaxed text-[--c-muted] mb-9 max-w-md">
+        Especializado en <strong class="text-[--c-text] font-semibold">arquitectura limpia</strong> con NestJS, React y TypeScript,
+        y en el desarrollo de <strong class="text-[--c-text] font-semibold">agentes de inteligencia artificial</strong>.
+        Lidero proyectos y entrego soluciones escalables de alto impacto.
+      </p>
+
+      <!-- CTAs -->
+      <nav class="anim-4 flex flex-wrap gap-2.5">
+        <SocialPill href="mailto:b.quezadagodoy@gmail.com">
+          <MailIcon class="size-4" />
+          Contacto
+        </SocialPill>
+        <SocialPill href="https://linkedin.com/in/benjaminqg">
+          <LinkedInIcon class="size-4" />
+          LinkedIn
+        </SocialPill>
+        <SocialPill href="tel:+56966188938">
+          <svg xmlns="http://www.w3.org/2000/svg" class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+          </svg>
+          Teléfono
+        </SocialPill>
+        <a href="/cv.pdf" target="_blank"
+          class="btn-cv inline-flex items-center gap-2 px-4 py-1.5 text-sm font-semibold rounded-full focus:outline-none">
+          <svg xmlns="http://www.w3.org/2000/svg" class="size-4" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none">
+            <path d="M14 3v4a1 1 0 0 0 1 1h4" /><path d="M17 21h-10a2 2 0 0 1-2-2v-14a2 2 0 0 1 2-2h7l5 5v11a2 2 0 0 1-2 2z" />
+            <path d="M9 13l6 0" /><path d="M9 17l6 0" />
+          </svg>
+          Descargar CV
+        </a>
+      </nav>
     </div>
-    <a
-      href="https://linkedin.com/in/benjaminqg"
-      target="_blank"
-      rel="noopener"
-      class="flex items-center transition md:justify-center md:hover:scale-105"
-    >
-      <Badge>Disponible</Badge>
-    </a>
-  </div>
 
-  <!-- Name -->
-  <h1 class="text-4xl font-bold tracking-tight sm:text-6xl mb-4 animate-fade-up-delay-1">
-    Hola, Soy <span class="hero-name">Benjamín.</span>
-  </h1>
+    <!-- ── RIGHT ── -->
+    <div class="anim-right flex flex-col items-center lg:items-start gap-5 lg:pt-10">
+      <!-- Photo with corner brackets -->
+      <div class="relative inline-block p-5">
+        <!-- Corner brackets -->
+        <span class="deco-bracket deco-tl" style="top:0;left:0"></span>
+        <span class="deco-bracket deco-tr" style="top:0;right:0"></span>
+        <span class="deco-bracket deco-bl" style="bottom:0;left:0"></span>
+        <span class="deco-bracket deco-br" style="bottom:0;right:0"></span>
 
-  <!-- Bio -->
-  <p class="mt-4 text-xl leading-relaxed text-gray-700 dark:[&>strong]:text-violet-300 [&>strong]:text-violet-600 [&>strong]:font-semibold dark:text-gray-300 mb-10 animate-fade-up-delay-2">
-    <strong>Ingeniero en Computación e Informática</strong><br />
-    Con experiencia como Desarrollador Fullstack, especializado en arquitectura limpia y tecnologías modernas como NestJS, React, TypeScript y JavaScript. Me destaco por mi capacidad de liderar proyectos, colaborar en equipos multidisciplinarios y entregar soluciones escalables y de alto impacto.
-  </p>
-
-  <!-- CTA buttons -->
-  <nav class="flex flex-wrap gap-3 mb-14 animate-fade-up-delay-3">
-    <SocialPill href="mailto:b.quezadagodoy@gmail.com">
-      <MailIcon class="size-4" />
-      Contacto
-    </SocialPill>
-    <SocialPill href="https://linkedin.com/in/benjaminqg">
-      <LinkedInIcon class="size-4" />
-      LinkedIn
-    </SocialPill>
-    <SocialPill href="tel:+56966188938">
-      <svg xmlns="http://www.w3.org/2000/svg" class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
-      </svg>
-      Teléfono
-    </SocialPill>
-    <SocialPill href="/cv.pdf" target="_blank">
-      <svg xmlns="http://www.w3.org/2000/svg" class="size-4" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none">
-        <path d="M14 3v4a1 1 0 0 0 1 1h4" />
-        <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z" />
-        <path d="M9 9l1 0" />
-        <path d="M9 13l6 0" />
-        <path d="M9 17l6 0" />
-      </svg>
-      Descargar CV
-    </SocialPill>
-  </nav>
-
-  <!-- Tech stack -->
-  <section class="space-y-5 animate-fade-up-delay-4">
-    <div class="divider"></div>
-    <h2 class="text-lg font-semibold tracking-wide text-gray-500 dark:text-gray-400 uppercase text-sm">
-      Mi stack tecnológico
-    </h2>
-    <div class="tech-stack">
-      <div class="tech-stack-track">
-        <div class="flex gap-3">
-          <SocialPill href="https://react.dev/" target="_blank">
-            <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original.svg" class="size-4" alt="React" />
-            React
-          </SocialPill>
-          <SocialPill href="https://nestjs.com/" target="_blank">
-            <img src="https://www.vectorlogo.zone/logos/nestjs/nestjs-icon.svg" class="size-4" alt="NestJS" />
-            NestJS
-          </SocialPill>
-          <SocialPill href="https://nextjs.org/" target="_blank">
-            <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nextjs/nextjs-original.svg" class="size-4" alt="NextJS" />
-            NextJS
-          </SocialPill>
-          <SocialPill href="https://www.javascript.com/" target="_blank">
-            <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg" class="size-4" alt="JavaScript" />
-            JavaScript
-          </SocialPill>
-          <SocialPill href="https://www.python.org/" target="_blank">
-            <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" class="size-4" alt="Python" />
-            Python
-          </SocialPill>
-          <SocialPill href="https://www.typescriptlang.org/" target="_blank">
-            <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/typescript/typescript-original.svg" class="size-4" alt="TypeScript" />
-            TypeScript
-          </SocialPill>
-          <SocialPill href="https://www.postman.com/" target="_blank">
-            <img src="https://www.vectorlogo.zone/logos/getpostman/getpostman-icon.svg" class="size-4" alt="Postman" />
-            Postman
-          </SocialPill>
-          <SocialPill href="https://www.postgresql.org/" target="_blank">
-            <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/postgresql/postgresql-original.svg" class="size-4" alt="PostgreSQL" />
-            PostgreSQL
-          </SocialPill>
-          <SocialPill href="https://www.docker.com/" target="_blank">
-            <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/docker/docker-original.svg" class="size-4" alt="Docker" />
-            Docker
-          </SocialPill>
-          <SocialPill href="https://www.npmjs.com/" target="_blank">
-            <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/npm/npm-original-wordmark.svg" class="size-4" alt="NPM" />
-            NPM
-          </SocialPill>
-          <SocialPill href="https://firebase.google.com/" target="_blank">
-            <img src="https://www.vectorlogo.zone/logos/firebase/firebase-icon.svg" class="size-4" alt="Firebase" />
-            Firebase
-          </SocialPill>
+        <div class="photo-frame">
+          <img
+            class="w-52 h-52 lg:w-56 lg:h-56 object-cover rounded-[20px]"
+            src="/yo.jfif"
+            alt={personalImageAlt}
+            style="object-position:center center"
+          />
         </div>
-        <!-- Duplicate for seamless loop -->
-        <div class="flex gap-3">
-          <SocialPill href="https://react.dev/" target="_blank">
-            <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original.svg" class="size-4" alt="React" />
-            React
-          </SocialPill>
-          <SocialPill href="https://nestjs.com/" target="_blank">
-            <img src="https://www.vectorlogo.zone/logos/nestjs/nestjs-icon.svg" class="size-4" alt="NestJS" />
-            NestJS
-          </SocialPill>
-          <SocialPill href="https://nextjs.org/" target="_blank">
-            <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nextjs/nextjs-original.svg" class="size-4" alt="NextJS" />
-            NextJS
-          </SocialPill>
-          <SocialPill href="https://www.javascript.com/" target="_blank">
-            <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg" class="size-4" alt="JavaScript" />
-            JavaScript
-          </SocialPill>
-          <SocialPill href="https://www.python.org/" target="_blank">
-            <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" class="size-4" alt="Python" />
-            Python
-          </SocialPill>
-          <SocialPill href="https://www.typescriptlang.org/" target="_blank">
-            <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/typescript/typescript-original.svg" class="size-4" alt="TypeScript" />
-            TypeScript
-          </SocialPill>
-          <SocialPill href="https://www.postman.com/" target="_blank">
-            <img src="https://www.vectorlogo.zone/logos/getpostman/getpostman-icon.svg" class="size-4" alt="Postman" />
-            Postman
-          </SocialPill>
-          <SocialPill href="https://www.postgresql.org/" target="_blank">
-            <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/postgresql/postgresql-original.svg" class="size-4" alt="PostgreSQL" />
-            PostgreSQL
-          </SocialPill>
-          <SocialPill href="https://www.docker.com/" target="_blank">
-            <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/docker/docker-original.svg" class="size-4" alt="Docker" />
-            Docker
-          </SocialPill>
-          <SocialPill href="https://www.npmjs.com/" target="_blank">
-            <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/npm/npm-original-wordmark.svg" class="size-4" alt="NPM" />
-            NPM
-          </SocialPill>
-          <SocialPill href="https://firebase.google.com/" target="_blank">
-            <img src="https://www.vectorlogo.zone/logos/firebase/firebase-icon.svg" class="size-4" alt="Firebase" />
-            Firebase
-          </SocialPill>
+      </div>
+
+      <!-- Stats card -->
+      <div class="glass rounded-2xl w-full max-w-[240px] lg:max-w-full overflow-hidden">
+        <div class="flex divide-x divide-[--c-border]">
+          <div class="stat-item flex-1 flex flex-col items-center py-4 px-2">
+            <span class="text-2xl font-bold text-[--c-text]">2+</span>
+            <span class="text-[10px] font-medium uppercase tracking-wider text-[--c-muted] mt-0.5">años exp.</span>
+          </div>
+          <div class="stat-item flex-1 flex flex-col items-center py-4 px-2">
+            <span class="text-2xl font-bold text-[--c-text]">3</span>
+            <span class="text-[10px] font-medium uppercase tracking-wider text-[--c-muted] mt-0.5">proyectos</span>
+          </div>
+          <div class="stat-item flex-1 flex flex-col items-center py-4 px-2">
+            <span class="text-2xl font-bold text-[--c-text]">2</span>
+            <span class="text-[10px] font-medium uppercase tracking-wider text-[--c-muted] mt-0.5">certs.</span>
+          </div>
         </div>
       </div>
     </div>
-  </section>
-</div>
+  </div>
+
+  <!-- TECH STACK MARQUEE -->
+  <div class="mt-16 anim-4">
+    <div class="fade-line mb-6"></div>
+    <p class="text-[11px] font-bold tracking-[0.22em] uppercase text-[--c-muted] mb-4">
+      Stack tecnológico
+    </p>
+    <div class="marquee-wrap">
+      <div class="marquee-track">
+        <!-- Set 1 -->
+        <div class="flex gap-3 shrink-0">
+          <SocialPill href="https://react.dev/" target="_blank"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original.svg" class="size-4" alt="React"/>React</SocialPill>
+          <SocialPill href="https://nestjs.com/" target="_blank"><img src="https://www.vectorlogo.zone/logos/nestjs/nestjs-icon.svg" class="size-4" alt="NestJS"/>NestJS</SocialPill>
+          <SocialPill href="https://nextjs.org/" target="_blank"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nextjs/nextjs-original.svg" class="size-4" alt="NextJS"/>NextJS</SocialPill>
+          <SocialPill href="https://www.typescriptlang.org/" target="_blank"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/typescript/typescript-original.svg" class="size-4" alt="TypeScript"/>TypeScript</SocialPill>
+          <SocialPill href="https://www.javascript.com/" target="_blank"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg" class="size-4" alt="JavaScript"/>JavaScript</SocialPill>
+          <SocialPill href="https://www.python.org/" target="_blank"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" class="size-4" alt="Python"/>Python</SocialPill>
+          <SocialPill href="https://www.postgresql.org/" target="_blank"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/postgresql/postgresql-original.svg" class="size-4" alt="PostgreSQL"/>PostgreSQL</SocialPill>
+          <SocialPill href="https://www.docker.com/" target="_blank"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/docker/docker-original.svg" class="size-4" alt="Docker"/>Docker</SocialPill>
+          <SocialPill href="https://firebase.google.com/" target="_blank"><img src="https://www.vectorlogo.zone/logos/firebase/firebase-icon.svg" class="size-4" alt="Firebase"/>Firebase</SocialPill>
+          <SocialPill href="https://www.postman.com/" target="_blank"><img src="https://www.vectorlogo.zone/logos/getpostman/getpostman-icon.svg" class="size-4" alt="Postman"/>Postman</SocialPill>
+        </div>
+        <!-- Set 2 (duplicate for seamless loop) -->
+        <div class="flex gap-3 shrink-0">
+          <SocialPill href="https://react.dev/" target="_blank"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original.svg" class="size-4" alt="React"/>React</SocialPill>
+          <SocialPill href="https://nestjs.com/" target="_blank"><img src="https://www.vectorlogo.zone/logos/nestjs/nestjs-icon.svg" class="size-4" alt="NestJS"/>NestJS</SocialPill>
+          <SocialPill href="https://nextjs.org/" target="_blank"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nextjs/nextjs-original.svg" class="size-4" alt="NextJS"/>NextJS</SocialPill>
+          <SocialPill href="https://www.typescriptlang.org/" target="_blank"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/typescript/typescript-original.svg" class="size-4" alt="TypeScript"/>TypeScript</SocialPill>
+          <SocialPill href="https://www.javascript.com/" target="_blank"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg" class="size-4" alt="JavaScript"/>JavaScript</SocialPill>
+          <SocialPill href="https://www.python.org/" target="_blank"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" class="size-4" alt="Python"/>Python</SocialPill>
+          <SocialPill href="https://www.postgresql.org/" target="_blank"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/postgresql/postgresql-original.svg" class="size-4" alt="PostgreSQL"/>PostgreSQL</SocialPill>
+          <SocialPill href="https://www.docker.com/" target="_blank"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/docker/docker-original.svg" class="size-4" alt="Docker"/>Docker</SocialPill>
+          <SocialPill href="https://firebase.google.com/" target="_blank"><img src="https://www.vectorlogo.zone/logos/firebase/firebase-icon.svg" class="size-4" alt="Firebase"/>Firebase</SocialPill>
+          <SocialPill href="https://www.postman.com/" target="_blank"><img src="https://www.vectorlogo.zone/logos/getpostman/getpostman-icon.svg" class="size-4" alt="Postman"/>Postman</SocialPill>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
