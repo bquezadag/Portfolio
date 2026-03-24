@@ -2,26 +2,19 @@
 const currentYear = new Date().getFullYear()
 ---
 
-<footer
-  class="opacity-80 m-4 min-[375px]:pl-4 md:pl-0 mt-16 w-full mx-auto container lg:max-w-4xl md:max-w-2xl mb-10 flex justify-center"
->
-  <div
-    class="rounded-lg w-full max-w-screen-xl mx-auto md:flex md:items-center md:justify-between py-4"
-  >
-    <span class="text-sm sm:text-center text-zinc-800/90 dark:text-zinc-200/90"
-      >© {currentYear}
-      <a href="#" class="hover:underline">bqdev</a>. Todos los derechos reservados
+<footer class="mt-20 mb-8 w-full mx-auto container lg:max-w-4xl md:max-w-2xl px-4">
+  <div class="border-t border-gray-200/70 dark:border-white/[0.07] pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+    <span class="text-sm text-gray-500 dark:text-gray-500">
+      © {currentYear}
+      <a href="#" class="font-medium text-gray-700 dark:text-gray-300 hover:text-violet-600 dark:hover:text-violet-400 transition-colors">bqdev</a>
+      · Todos los derechos reservados
     </span>
-    <ul
-      class="flex flex-wrap items-center mt-3 text-sm font-medium dark:text-white/90 sm:mt-0"
-    >
+    <ul class="flex items-center gap-6 text-sm text-gray-500 dark:text-gray-500">
       <li>
-        <a href="/#sobre-mi" class="hover:underline me-4 md:me-6">Sobre mí</a>
+        <a href="/#sobre-mi" class="hover:text-violet-600 dark:hover:text-violet-400 transition-colors">Sobre mí</a>
       </li>
       <li>
-        <a id="contacto" href="mailto:b.quezadagodoy@gmail.com" class="hover:underline"
-          >Contacto</a
-        >
+        <a id="contacto" href="mailto:b.quezadagodoy@gmail.com" class="hover:text-violet-600 dark:hover:text-violet-400 transition-colors">Contacto</a>
       </li>
     </ul>
   </div>

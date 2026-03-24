@@ -2,23 +2,32 @@
  const personalImageAlt = "Benjamín Quezada"
 ---
 
-<article class="flex flex-col items-center justify-center gap-8 text-gray-700 text-justify dark:text-gray-300 md:flex-row">
-  <div
-    class="[&>p]:mb-4 [&>p>strong]:text-yellow-500 dark:[&>p>strong]:text-yellow-100 [&>p>strong]:font-normal [&>p>strong]:font-mono text-pretty order-2 md:order-1"
-  >
-    <p>
-      Mi nombre es Benjamín Quezada, Ingeniero en Informática egresado de la Universidad Andrés Bello.
-    </p>
-    <p>
-      Algunas de mis habilidades incluyen: <strong
-        >trabajo en equipo y manejo de tecnologías como NestJS, TypeScript, React, C, C++, MongoDB y VMware.</strong>
-    </p>
-    <p>
-      Certificaciones: <strong
-        >Artificial Intelligence Practitioner Certificate y TOEIC Bridge.</strong>
-    </p>
+<article class="flex flex-col items-center justify-center gap-10 md:flex-row">
+  <div class="flex-1 rounded-2xl bg-white/60 dark:bg-white/[0.03] border border-gray-200/80 dark:border-white/[0.06] shadow-sm dark:shadow-none p-6 order-2 md:order-1">
+    <div class="[&>p]:mb-4 [&>p]:text-sm [&>p]:leading-relaxed [&>p>strong]:text-violet-600 dark:[&>p>strong]:text-violet-300 [&>p>strong]:font-semibold text-gray-700 dark:text-gray-300">
+      <p>
+        Mi nombre es Benjamín Quezada, <strong>Ingeniero en Informática</strong> egresado de la Universidad Andrés Bello.
+      </p>
+      <p>
+        Algunas de mis habilidades incluyen: <strong>trabajo en equipo y manejo de tecnologías como NestJS, TypeScript, React, C, C++, MongoDB y VMware.</strong>
+      </p>
+      <p class="!mb-0">
+        Certificaciones: <strong>Artificial Intelligence Practitioner Certificate y TOEIC Bridge.</strong>
+      </p>
+    </div>
   </div>
 
-  <img width="200" height="200" src="/yo.jfif" alt={personalImageAlt} class="order-1 object-cover w-64 h-full p-1 md:order-2 rotate-3 lg:p-2 lg:w-64 aspect-square rounded-2xl bg-black/20 dark:bg-yellow-500/5 ring-1 ring-black/70 dark:ring-white/20 " style="object-position: 50% 50%">
-
+  <div class="order-1 md:order-2 flex-shrink-0">
+    <div class="relative">
+      <div class="absolute inset-0 rounded-2xl bg-gradient-to-br from-violet-400/30 to-blue-400/30 dark:from-violet-500/20 dark:to-blue-500/20 blur-xl scale-105"></div>
+      <img
+        width="200"
+        height="200"
+        src="/yo.jfif"
+        alt={personalImageAlt}
+        class="relative w-48 h-48 lg:w-56 lg:h-56 object-cover rounded-2xl rotate-2 ring-1 ring-black/10 dark:ring-white/10 shadow-lg"
+        style="object-position: 50% 50%"
+      />
+    </div>
+  </div>
 </article>

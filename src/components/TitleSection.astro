@@ -1,5 +1,8 @@
-<h2
-	class={`flex items-center mb-6 text-3xl font-semibold gap-x-3 text-black/80 dark:text-white ${Astro.props.className}`}
->
+<div class="mb-8">
+  <h2
+    class={`flex items-center text-2xl font-bold gap-x-3 text-black/80 dark:text-white/95 [&>svg]:text-violet-500 dark:[&>svg]:text-violet-400 ${Astro.props.className}`}
+  >
     <slot />
-</h2>
+  </h2>
+  <div class="mt-3 h-px bg-gradient-to-r from-violet-400/60 via-blue-400/30 to-transparent dark:from-violet-500/50 dark:via-blue-500/20 dark:to-transparent"></div>
+</div>
