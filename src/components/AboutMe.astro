@@ -1,8 +1,8 @@
 ---
 const personalImageAlt = "Benjamín Quezada"
 
-const skills = ["NestJS", "TypeScript", "React", "Next.js", "PostgreSQL", "Docker", "C / C++", "MongoDB", "VMware", "AI Agent Specialist", "Jira", "Authentik"]
-const certs  = ["AI Practitioner Certificate", "TOEIC Bridge"]
+const skills = ["NestJS", "TypeScript", "React", "Next.js", "PostgreSQL", "Docker", "C / C++", "MongoDB", "VMware", "AI Agent Specialist", "Claude", "Agent AI", "Jira", "Authentik"]
+const certs  = ["AI Practitioner Certificate", "Claude 101 — Anthropic", "TOEIC Bridge"]
 ---
 
 <style>
@@ -14,7 +14,7 @@ const certs  = ["AI Practitioner Certificate", "TOEIC Bridge"]
     content: '';
     position: absolute; inset: -2px;
     border-radius: 20px;
-    background: linear-gradient(135deg, #7c3aed, #3b82f6);
+    background: linear-gradient(135deg, #71717a, #a1a1aa);
     z-index: -1;
     opacity: 0.6;
     transition: opacity 0.3s;
@@ -24,7 +24,7 @@ const certs  = ["AI Practitioner Certificate", "TOEIC Bridge"]
     content: '';
     position: absolute; inset: -24px;
     border-radius: 32px;
-    background: linear-gradient(135deg, rgba(124,58,237,0.15), rgba(59,130,246,0.08));
+    background: linear-gradient(135deg, rgba(113,113,122,0.15), rgba(113,113,122,0.08));
     filter: blur(24px);
     z-index: -2;
   }
@@ -50,30 +50,33 @@ const certs  = ["AI Practitioner Certificate", "TOEIC Bridge"]
     display: block;
     width: 5px; height: 5px;
     border-radius: 50%;
-    background: linear-gradient(135deg, #7c3aed, #3b82f6);
+    background: linear-gradient(135deg, #71717a, #a1a1aa);
     flex-shrink: 0;
   }
 </style>
 
-<div class="grid grid-cols-1 md:grid-cols-[1fr_auto] gap-10 items-end">
+<div class="w-full">
 
   <!-- Text side -->
   <div class="space-y-6" data-animate>
-    <p class="text-base leading-relaxed text-[--c-muted]">
-      Mi nombre es <strong class="font-semibold text-[--c-text]">Benjamín Quezada</strong>,
-      Ingeniero en Informática egresado de la
-      <strong class="font-semibold text-[--c-text]">Universidad Andrés Bello</strong>.
-      Apasionado por crear software de calidad con arquitectura limpia y tecnologías modernas.
-    </p>
-
-    <!-- Skills -->
-    <div>
-      <p class="text-[11px] font-bold tracking-[0.2em] uppercase text-[--c-muted] mb-3">
-        Tecnologías
+    <div class="space-y-4 text-base leading-relaxed text-[--c-muted]">
+      <p>
+        Soy <strong class="font-semibold text-[--c-text]">Benjamín Quezada</strong>, Ingeniero en Informática
+        de 23 años, egresado de la <strong class="font-semibold text-[--c-text]">Universidad Andrés Bello</strong>.
+        Me destaco por mi capacidad organizativa, adaptabilidad y habilidad para liderar proyectos tecnológicos,
+        lo que me permite aportar valor en entornos dinámicos y colaborativos.
       </p>
-      <div class="flex flex-wrap gap-2">
-        {skills.map(s => <span class="skill-tag">{s}</span>)}
-      </div>
+      <p>
+        Cuento con experiencia en desarrollo de software utilizando <strong class="font-semibold text-[--c-text]">NestJS, React, Python, Node.js, C, C++, Java, SQL y MongoDB</strong>,
+        y tengo un compromiso real con el aprendizaje continuo y la actualización constante en tecnologías emergentes,
+        especialmente en el mundo de la <strong class="font-semibold text-[--c-text]">inteligencia artificial y los agentes autónomos</strong>.
+      </p>
+      <p>
+        Fuera del trabajo, soy un apasionado de los <strong class="font-semibold text-[--c-text]">videojuegos</strong> y la
+        tecnología en general — siempre explorando nuevas herramientas, tendencias y formas de innovar.
+        Mi objetivo profesional es seguir creciendo en el área de la ingeniería informática,
+        aportando soluciones de alto impacto que impulsen el desarrollo tecnológico en las organizaciones donde participo.
+      </p>
     </div>
 
     <!-- Certs -->
@@ -85,7 +88,7 @@ const certs  = ["AI Practitioner Certificate", "TOEIC Bridge"]
         {certs.map(c => (
           <div class="flex items-center gap-3 p-3 glass rounded-xl">
             <span class="flex-shrink-0 w-7 h-7 rounded-lg flex items-center justify-center
-              bg-violet-500/15 text-violet-500 dark:text-violet-400">
+              bg-zinc-500/15 text-zinc-500 dark:text-zinc-400">
               <svg xmlns="http://www.w3.org/2000/svg" class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
               </svg>
@@ -97,18 +100,5 @@ const certs  = ["AI Practitioner Certificate", "TOEIC Bridge"]
     </div>
   </div>
 
-  <!-- Photo side -->
-  <div class="flex justify-center md:justify-end" data-animate data-delay="2">
-    <div class="photo-glow">
-      <img
-        width="200"
-        height="200"
-        src="/yo.jfif"
-        alt={personalImageAlt}
-        class="w-52 h-52 lg:w-60 lg:h-60 object-cover rounded-[18px] rotate-1"
-        style="object-position:50% 50%"
-      />
-    </div>
-  </div>
 
 </div>

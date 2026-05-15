@@ -28,41 +28,14 @@ const { description, title } = Astro.props
   <body class="relative text-[--c-text]">
 
     <!-- Top accent line -->
-    <div class="fixed top-0 left-0 right-0 h-[2px] z-50 pointer-events-none
-      bg-gradient-to-r from-fuchsia-500 via-violet-500 to-cyan-400 opacity-90"></div>
-
-    <!-- Bottom scroll vignette -->
-    <div class="bottom-vignette fixed bottom-0 left-0 right-0 z-40 pointer-events-none"></div>
+    <div class="fixed top-0 left-0 right-0 h-[1px] z-50 pointer-events-none
+      bg-gradient-to-r from-transparent via-zinc-400 to-transparent opacity-60"></div>
 
     <!-- Base bg -->
-    <div class="fixed inset-0 z-[-4] bg-[#f3f2ff] dark:bg-[#0a0610]"></div>
+    <div class="fixed inset-0 z-[-2] bg-[#e8e4dd] dark:bg-[#000000]"></div>
 
-    <!-- Dot + line grid -->
-    <div class="fixed inset-0 z-[-3] dot-grid pointer-events-none"></div>
-
-    <!-- Full-page beam sweep -->
-    <div aria-hidden="true" class="page-beam fixed inset-0 z-[-1] pointer-events-none overflow-hidden"></div>
-
-    <!-- Full-page horizontal lines -->
-    <div aria-hidden="true" class="fixed inset-0 z-[-1] pointer-events-none">
-      <span class="page-hline absolute left-0 right-0 h-px" style="top:22%"></span>
-      <span class="page-hline absolute left-0 right-0 h-px" style="top:50%"></span>
-      <span class="page-hline absolute left-0 right-0 h-px" style="top:78%"></span>
-    </div>
-
-    <!-- Ambient glow orbs -->
-    <div aria-hidden="true"
-      class="orb-1 fixed z-[-2] w-[850px] h-[850px] rounded-full pointer-events-none blur-[180px]
-      bg-fuchsia-400/8 dark:bg-fuchsia-600/[.20]"
-      style="top:-22%;left:-10%"></div>
-    <div aria-hidden="true"
-      class="fixed z-[-2] w-[650px] h-[650px] rounded-full pointer-events-none blur-[160px]
-      bg-violet-400/6 dark:bg-violet-700/[.22]"
-      style="top:35%;right:-18%"></div>
-    <div aria-hidden="true"
-      class="fixed z-[-2] w-[500px] h-[500px] rounded-full pointer-events-none blur-[140px]
-      bg-emerald-400/5 dark:bg-emerald-700/[.12]"
-      style="bottom:-8%;left:22%"></div>
+    <!-- Dot grid (light: dark dots, dark: white dots) -->
+    <div class="fixed inset-0 z-[-1] pointer-events-none dot-grid-bg"></div>
 
     <Header />
     <slot />
@@ -71,22 +44,22 @@ const { description, title } = Astro.props
     <style is:global>
       :root {
         color-scheme: light dark;
-        --c-text:        rgba(14, 12, 28, 0.9);
-        --c-muted:       rgba(80, 70, 110, 0.6);
-        --c-card:        rgba(255,255,255,0.70);
-        --c-border:      rgba(120,80,220,0.08);
-        --c-border-h:    rgba(167,70,237,0.35);
-        --hero-grad:     linear-gradient(135deg,#1a0533 0%,#7c1fa8 40%,#2563eb 100%);
-        --accent:        #a21caf;
+        --c-text:        rgba(15, 15, 15, 0.90);
+        --c-muted:       rgba(82, 82, 91, 0.70);
+        --c-card:        rgba(255,255,255,0.65);
+        --c-border:      rgba(0,0,0,0.07);
+        --c-border-h:    rgba(0,0,0,0.18);
+        --hero-grad:     linear-gradient(135deg,#0f0f0f 0%,#3f3f46 100%);
+        --accent:        #3f3f46;
       }
       .dark {
-        --c-text:        rgba(238, 232, 255, 0.92);
-        --c-muted:       rgba(170, 155, 210, 0.52);
+        --c-text:        rgba(240, 240, 240, 0.92);
+        --c-muted:       rgba(161, 161, 170, 0.60);
         --c-card:        rgba(255,255,255,0.04);
-        --c-border:      rgba(200,150,255,0.07);
-        --c-border-h:    rgba(200,100,255,0.4);
-        --hero-grad:     linear-gradient(135deg,#ffffff 0%,#f0abfc 35%,#a5b4fc 70%,#67e8f9 100%);
-        --accent:        #e879f9;
+        --c-border:      rgba(255,255,255,0.07);
+        --c-border-h:    rgba(255,255,255,0.18);
+        --hero-grad:     linear-gradient(135deg,#ffffff 0%,#d4d4d8 50%,#a1a1aa 100%);
+        --accent:        #e4e4e7;
       }
 
       html {
@@ -109,78 +82,14 @@ const { description, title } = Astro.props
         }
       }
 
-      /* Dot + line grid */
-      .dot-grid {
-        background-image:
-          radial-gradient(circle, rgba(90,70,140,0.18) 1px, transparent 1px),
-          linear-gradient(rgba(90,70,140,0.05) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(90,70,140,0.05) 1px, transparent 1px);
-        background-size: 28px 28px, 28px 28px, 28px 28px;
-        opacity: 0.7;
+      /* Dot grid */
+      .dot-grid-bg {
+        background-image: radial-gradient(circle, rgba(0,0,0,0.12) 1.5px, transparent 1.5px);
+        background-size: 30px 30px;
       }
-      .dark .dot-grid {
-        background-image:
-          radial-gradient(circle, rgba(200,190,255,0.07) 1px, transparent 1px),
-          linear-gradient(rgba(124,58,237,0.04) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(124,58,237,0.04) 1px, transparent 1px);
-        background-size: 28px 28px, 28px 28px, 28px 28px;
-        opacity: 1;
+      .dark .dot-grid-bg {
+        background-image: radial-gradient(circle, rgba(255,255,255,0.20) 1.5px, transparent 1.5px);
       }
-
-      /* Bottom scroll vignette */
-      .bottom-vignette {
-        height: 160px;
-        opacity: 0;
-        transition: opacity 0.5s ease;
-        background: linear-gradient(to bottom,
-          transparent 0%,
-          rgba(243,242,255,0.7) 50%,
-          rgba(243,242,255,1) 100%
-        );
-      }
-      .dark .bottom-vignette {
-        background: linear-gradient(to bottom,
-          transparent 0%,
-          rgba(4,5,13,0.8) 50%,
-          rgba(4,5,13,1) 100%
-        );
-      }
-      .bottom-vignette.visible { opacity: 1; }
-
-      /* Full-page beam sweep */
-      @keyframes beam-sweep {
-        0%   { transform: translateX(-120%) skewX(-12deg); opacity:0; }
-        8%   { opacity:1; }
-        92%  { opacity:1; }
-        100% { transform: translateX(320%) skewX(-12deg); opacity:0; }
-      }
-      .page-beam::after {
-        content:'';
-        position:absolute; top:0; bottom:0; left:0;
-        width:30%;
-        background:linear-gradient(90deg,
-          transparent,
-          rgba(217,70,239,0.04),
-          rgba(139,92,246,0.03),
-          transparent
-        );
-        animation: beam-sweep 8s cubic-bezier(0.4,0,0.6,1) 1s infinite;
-      }
-
-      /* Full-page horizontal decoration lines */
-      .page-hline {
-        background: linear-gradient(90deg,transparent 0%,rgba(162,28,175,0.06) 20%,rgba(162,28,175,0.06) 80%,transparent 100%);
-      }
-      .dark .page-hline {
-        background: linear-gradient(90deg,transparent 0%,rgba(217,70,239,0.07) 20%,rgba(217,70,239,0.07) 80%,transparent 100%);
-      }
-
-      /* Orb float */
-      @keyframes orb-float {
-        0%,100% { transform: translateY(0) scale(1); }
-        50%      { transform: translateY(-50px) scale(1.07); }
-      }
-      .orb-1 { animation: orb-float 22s ease-in-out infinite; }
 
       /* Gradient text */
       .text-gradient {
@@ -194,8 +103,8 @@ const { description, title } = Astro.props
       .glass {
         background: var(--c-card);
         border: 1px solid var(--c-border);
-        backdrop-filter: blur(18px);
-        -webkit-backdrop-filter: blur(18px);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
         transition: border-color 0.25s;
       }
       .glass:hover { border-color: var(--c-border-h); }
@@ -208,22 +117,22 @@ const { description, title } = Astro.props
       .grad-border::before {
         content: '';
         position: absolute;
-        inset: -1.5px;
+        inset: -1px;
         border-radius: 19px;
-        background: linear-gradient(135deg,#7c3aed,#3b82f6,#10b981);
+        background: linear-gradient(135deg,#52525b,#71717a,#a1a1aa);
         z-index: -1;
-        opacity: 0.55;
+        opacity: 0.40;
         transition: opacity 0.3s;
       }
-      .grad-border:hover::before { opacity: 0.85; }
+      .grad-border:hover::before { opacity: 0.70; }
 
       /* Scroll reveal */
       [data-animate] {
         opacity: 0;
-        transform: translateY(32px);
+        transform: translateY(24px);
         transition:
-          opacity  0.75s cubic-bezier(0.16,1,0.3,1),
-          transform 0.75s cubic-bezier(0.16,1,0.3,1);
+          opacity  0.65s cubic-bezier(0.16,1,0.3,1),
+          transform 0.65s cubic-bezier(0.16,1,0.3,1);
       }
       [data-animate].visible { opacity:1; transform:translateY(0); }
       [data-animate][data-delay="1"] { transition-delay: 0.07s; }
@@ -236,10 +145,10 @@ const { description, title } = Astro.props
       /* Slide in from left */
       [data-animate-x] {
         opacity: 0;
-        transform: translateX(-24px);
+        transform: translateX(-20px);
         transition:
-          opacity  0.7s cubic-bezier(0.16,1,0.3,1),
-          transform 0.7s cubic-bezier(0.16,1,0.3,1);
+          opacity  0.6s cubic-bezier(0.16,1,0.3,1),
+          transform 0.6s cubic-bezier(0.16,1,0.3,1);
       }
       [data-animate-x].visible { opacity:1; transform:translateX(0); }
       [data-animate-x][data-delay="1"] { transition-delay: 0.08s; }
@@ -248,34 +157,21 @@ const { description, title } = Astro.props
 
       /* Selection */
       ::selection {
-        background: rgba(124,58,237,0.32);
+        background: rgba(255,255,255,0.20);
         color: #fff;
       }
 
       /* Scrollbar */
-      ::-webkit-scrollbar { width: 5px; }
+      ::-webkit-scrollbar { width: 4px; }
       ::-webkit-scrollbar-track { background: transparent; }
       ::-webkit-scrollbar-thumb {
-        background: rgba(124,58,237,0.32);
+        background: rgba(255,255,255,0.15);
         border-radius: 99px;
       }
-      ::-webkit-scrollbar-thumb:hover { background: rgba(124,58,237,0.55); }
+      ::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.30); }
     </style>
 
     <script>
-      document.addEventListener('astro:page-load', () => {
-        const vignette = document.querySelector('.bottom-vignette')
-        if (vignette) {
-          const update = () => {
-            const nearBottom = window.innerHeight + window.scrollY >= document.body.scrollHeight - 80
-            const scrolling  = window.scrollY > 60
-            vignette.classList.toggle('visible', scrolling && !nearBottom)
-          }
-          window.addEventListener('scroll', update, { passive: true })
-          update()
-        }
-      })
-
       document.addEventListener('astro:page-load', () => {
         const els = document.querySelectorAll('[data-animate],[data-animate-x]')
         if (!els.length) return

@@ -19,8 +19,8 @@
   .form-input::placeholder { color: var(--c-muted); }
   .form-input:focus {
     background: rgba(255,255,255,0.07);
-    border-color: rgba(167,139,250,0.55);
-    box-shadow: 0 0 0 4px rgba(124,58,237,0.08);
+    border-color: rgba(212,212,216,0.55);
+    box-shadow: 0 0 0 4px rgba(228,228,231,0.08);
   }
 
   /* Label */
@@ -37,7 +37,7 @@
   /* Button */
   .btn-send {
     width: 100%;
-    background: linear-gradient(135deg, #7c3aed, #4f46e5);
+    background: linear-gradient(135deg, #3f3f46, #52525b);
     color: #fff;
     border: none;
     border-radius: 12px;
@@ -47,7 +47,7 @@
     font-family: inherit;
     cursor: pointer;
     letter-spacing: 0.02em;
-    box-shadow: 0 4px 20px rgba(124,58,237,0.3);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.25);
     transition: box-shadow 0.25s, transform 0.15s, opacity 0.2s;
     display: flex;
     align-items: center;
@@ -55,7 +55,7 @@
     gap: 0.5rem;
   }
   .btn-send:hover:not(:disabled) {
-    box-shadow: 0 6px 28px rgba(124,58,237,0.45);
+    box-shadow: 0 6px 28px rgba(0,0,0,0.35);
     transform: translateY(-1px);
   }
   .btn-send:active:not(:disabled) { transform: translateY(0); }
@@ -74,9 +74,9 @@
   }
   .alert.show { display: flex; }
   .alert-success {
-    background: rgba(16,185,129,0.08);
-    border: 1px solid rgba(16,185,129,0.22);
-    color: #10b981;
+    background: rgba(161,161,170,0.08);
+    border: 1px solid rgba(161,161,170,0.22);
+    color: #a1a1aa;
   }
   .alert-error {
     background: rgba(239,68,68,0.08);
@@ -111,14 +111,14 @@
     <div class="glass rounded-3xl overflow-hidden">
 
       <!-- Top accent -->
-      <div class="h-[2px] bg-gradient-to-r from-violet-500 via-blue-400 to-cyan-400"></div>
+      <div class="h-[2px] bg-gradient-to-r from-zinc-500 via-zinc-400 to-zinc-300"></div>
 
       <div class="p-8 sm:p-10">
 
         <!-- Header -->
         <div class="text-center mb-10">
           <span class="inline-block text-[11px] font-bold tracking-[0.25em] uppercase
-            text-violet-500 dark:text-violet-400 mb-3">
+            text-zinc-500 dark:text-zinc-400 mb-3">
             04 / Contacto
           </span>
           <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight mb-3">
@@ -149,7 +149,7 @@
           <div>
             <label class="form-label" for="cf-message">Mensaje</label>
             <textarea id="cf-message" class="form-input" rows="5"
-              placeholder="Cuéntame sobre tu proyecto...&#10;¿Qué necesitas? ¿Cuál es el plazo?" required></textarea>
+              placeholder="Cuéntame sobre tu proyecto...&#10;¿Cuál es tu necesidad?" required></textarea>
           </div>
 
           <!-- Submit -->

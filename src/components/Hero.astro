@@ -1,7 +1,6 @@
 ---
 const personalImageAlt = "Benjamín Quezada"
 import LinkedInIcon from "@/components/icons/LinkedIn.astro"
-import MailIcon from "@/components/icons/Mail.astro"
 import SocialPill from "@/components/SocialPill.astro"
 ---
 
@@ -40,7 +39,7 @@ import SocialPill from "@/components/SocialPill.astro"
     content:'';
     position:absolute; inset:-2px;
     border-radius:24px;
-    background:linear-gradient(135deg,#7c3aed,#3b82f6,#06b6d4);
+    background:linear-gradient(135deg,#71717a,#a1a1aa,#d4d4d8);
     z-index:-1;
     opacity:0.75;
   }
@@ -48,7 +47,7 @@ import SocialPill from "@/components/SocialPill.astro"
     content:'';
     position:absolute; inset:-30px;
     border-radius:40px;
-    background:linear-gradient(135deg,rgba(124,58,237,0.18),rgba(59,130,246,0.08));
+    background:linear-gradient(135deg,rgba(113,113,122,0.18),rgba(113,113,122,0.08));
     filter:blur(30px);
     z-index:-2;
   }
@@ -58,7 +57,7 @@ import SocialPill from "@/components/SocialPill.astro"
     content:'';
     display:inline-block;
     width:2.5rem; height:2px;
-    background:linear-gradient(90deg,#7c3aed,#3b82f6);
+    background:linear-gradient(90deg,#71717a,#a1a1aa);
     border-radius:99px;
     vertical-align:middle;
     margin-right:0.6rem;
@@ -82,54 +81,25 @@ import SocialPill from "@/components/SocialPill.astro"
   /* Stats card */
   .stat-item + .stat-item { border-left:1px solid var(--c-border); }
 
-  /* CV button glow */
+  /* CV button */
   .btn-cv {
-    background: linear-gradient(135deg,#7c3aed,#4f46e5);
+    background: linear-gradient(135deg,#3f3f46,#52525b);
     color:#fff;
     border:none;
-    box-shadow: 0 4px 20px rgba(124,58,237,0.3);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.25);
     transition: box-shadow 0.25s, transform 0.2s;
   }
   .btn-cv:hover {
-    box-shadow: 0 6px 28px rgba(124,58,237,0.5);
+    box-shadow: 0 6px 28px rgba(0,0,0,0.35);
     transform: translateY(-1px);
   }
 
   /* Divider */
   .fade-line {
     height:1px;
-    background:linear-gradient(90deg,transparent,rgba(124,58,237,0.45),rgba(59,130,246,0.25),transparent);
+    background:linear-gradient(90deg,transparent,rgba(113,113,122,0.45),rgba(161,161,170,0.25),transparent);
   }
 
-  /* ── Decorative corner brackets (right column) ── */
-  .deco-bracket {
-    position:absolute;
-    width:20px; height:20px;
-    pointer-events:none;
-  }
-  .deco-bracket::before,
-  .deco-bracket::after {
-    content:'';
-    position:absolute;
-    background:rgba(124,58,237,0.35);
-    transition: background 0.3s;
-  }
-  .dark .deco-bracket::before,
-  .dark .deco-bracket::after {
-    background:rgba(167,139,250,0.4);
-  }
-  /* top-left bracket */
-  .deco-tl::before { top:0; left:0; width:100%; height:1.5px; }
-  .deco-tl::after  { top:0; left:0; width:1.5px; height:100%; }
-  /* top-right bracket */
-  .deco-tr::before { top:0; right:0; width:100%; height:1.5px; }
-  .deco-tr::after  { top:0; right:0; width:1.5px; height:100%; }
-  /* bottom-left bracket */
-  .deco-bl::before { bottom:0; left:0; width:100%; height:1.5px; }
-  .deco-bl::after  { bottom:0; left:0; width:1.5px; height:100%; }
-  /* bottom-right bracket */
-  .deco-br::before { bottom:0; right:0; width:100%; height:1.5px; }
-  .deco-br::after  { bottom:0; right:0; width:1.5px; height:100%; }
 
 </style>
 
@@ -143,13 +113,13 @@ import SocialPill from "@/components/SocialPill.astro"
       <!-- Available badge -->
       <div class="anim-0 mb-7">
         <span class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold tracking-wide
-          bg-emerald-500/10 text-emerald-500 dark:text-emerald-400
+          bg-emerald-500/10 text-emerald-600 dark:text-emerald-400
           border border-emerald-500/20 dark:border-emerald-500/25">
           <span class="relative inline-flex size-2">
             <span class="animate-[ping_1.5s_ease_infinite] absolute inline-flex size-full rounded-full bg-emerald-400 opacity-60"></span>
             <span class="relative inline-flex size-2 rounded-full bg-emerald-500 dark:bg-emerald-400"></span>
           </span>
-          Disponible para trabajar
+          Disponible Freelance
         </span>
       </div>
 
@@ -164,7 +134,7 @@ import SocialPill from "@/components/SocialPill.astro"
       </div>
 
       <!-- Role -->
-      <p class="anim-2 role-line text-base font-semibold text-violet-600 dark:text-violet-400 mb-6">
+      <p class="anim-2 role-line text-base font-semibold text-zinc-600 dark:text-zinc-400 mb-6">
         Fullstack Developer · Ing. en Computación
       </p>
 
@@ -177,25 +147,9 @@ import SocialPill from "@/components/SocialPill.astro"
 
       <!-- CTAs -->
       <nav class="anim-4 flex flex-wrap gap-2.5">
-        <SocialPill href="mailto:b.quezadagodoy@gmail.com">
-          <MailIcon class="size-4" />
-          Contacto
-        </SocialPill>
         <SocialPill href="https://linkedin.com/in/benjaminqg">
           <LinkedInIcon class="size-4" />
           LinkedIn
-        </SocialPill>
-        <SocialPill href="tel:+56966188938">
-          <svg xmlns="http://www.w3.org/2000/svg" class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
-          </svg>
-          Teléfono
-        </SocialPill>
-        <SocialPill href="https://github.com/bquezadag">
-          <svg xmlns="http://www.w3.org/2000/svg" class="size-4" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/>
-          </svg>
-          GitHub
         </SocialPill>
         <a href="/cv.pdf" target="_blank"
           class="btn-cv inline-flex items-center gap-2 px-4 py-1.5 text-sm font-semibold rounded-full focus:outline-none">
@@ -211,14 +165,8 @@ import SocialPill from "@/components/SocialPill.astro"
     <!-- ── RIGHT ── -->
     <div class="anim-right flex flex-col items-center lg:items-start gap-5 lg:pt-10">
 
-      <!-- Photo with corner brackets — full width to match stats card -->
-      <div class="relative w-full max-w-[240px] lg:max-w-full p-5 flex justify-center">
-        <!-- Corner brackets -->
-        <span class="deco-bracket deco-tl" style="top:0;left:0"></span>
-        <span class="deco-bracket deco-tr" style="top:0;right:0"></span>
-        <span class="deco-bracket deco-bl" style="bottom:0;left:0"></span>
-        <span class="deco-bracket deco-br" style="bottom:0;right:0"></span>
-
+      <!-- Photo -->
+      <div class="relative w-full max-w-[240px] lg:max-w-full flex justify-center">
         <div class="photo-frame">
           <img
             class="w-48 h-48 lg:w-52 lg:h-52 object-cover rounded-[20px]"
@@ -241,7 +189,7 @@ import SocialPill from "@/components/SocialPill.astro"
             <span class="text-[10px] font-medium uppercase tracking-wider text-[--c-muted] mt-0.5">proyectos</span>
           </div>
           <div class="stat-item flex-1 flex flex-col items-center py-4 px-2">
-            <span class="text-2xl font-bold text-[--c-text]">2</span>
+            <span class="text-2xl font-bold text-[--c-text]">3</span>
             <span class="text-[10px] font-medium uppercase tracking-wider text-[--c-muted] mt-0.5">certs.</span>
           </div>
         </div>
